@@ -5,32 +5,44 @@
 ---
 ## Features
 ```gherkin
-Feature: The internet
+Feature: The internet - Logging in
 
-  Scenario: Loading the internet
-    Given I load the internet
-    Then the internet is loaded
+  Scenario: User can log in with valid details
+    Given I attempt to log in with valid details
+    Then I am presented with the success message
+    And the logout button is visible
 ```
 
 ---
 
 ## Step definitions
 ```typescript
-import TheInternet from '../model/pages/theinternet.page';
+let expect = require('chai').expect;
+import LoginPage from '../model/pages/login.page';
 
 var module: any;
 module.exports = function theinternet() {
 
     this.Given(
-        /^I load the internet/,
+        /^I attempt to log in with valid details/,
         function () {
-            TheInternet.open();
+            LoginPage.open();
+            LoginPage.usernameBox.setValue("tomsmith");
+            LoginPage.passwordBox.setValue("SuperSecretPassword!");
+            LoginPage.loginButton.click();
         } );
 
     this.Then(
-        /^the internet is loaded/,
+        /^I am presented with the success message/,
         function () {
-            TheInternet.welcomeMessage.waitForVisible();
+            expect(LoginPage.successMessage.getText())
+                .to.contain('You logged into a secure area!')
+        } );
+
+    this.Then(
+        /^the logout button is visible/,
+        function () {
+            expect(LoginPage.logoutButton.isVisible());
         } );
 };
 ```
@@ -38,14 +50,19 @@ module.exports = function theinternet() {
 
 ## Page object model
 ```typescript
-class theinternet {
+class Login_Page {
 
-    public get welcomeMessage()  { return browser.element("//h1[contains(.,'Welcome to the Internet')]") }
+    public get usernameBox()  { return browser.element("//input[@id='username']") }
+    public get passwordBox()  { return browser.element("//input[@id='password']") }
+    public get loginButton()  { return browser.element("//button[@type='submit']") }
+    public get logoutButton()  { return browser.element("//i[@class='icon-2x icon-signout']") }
+    public get successMessage()  { return browser.element("//div[@class='flash success']") }
+    public get errorMessage()  { return browser.element("//div[@class='flash error']") }
 
     public open(): void {
-        browser.url('/')
+        browser.url('/login')
     }
 }
-const TheInternet = new theinternet();
-export default TheInternet
+const LoginPage = new Login_Page();
+export default LoginPage
 ```
