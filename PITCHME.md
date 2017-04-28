@@ -4,7 +4,6 @@
 
 ---
 ## Features
-
 ```gherkin
 Feature: The internet
 
@@ -16,7 +15,6 @@ Feature: The internet
 ---
 
 ## Step definitions
- 
 ```typescript
 import TheInternet from '../model/pages/theinternet.page';
 
@@ -39,7 +37,6 @@ module.exports = function theinternet() {
 ---
 
 ## Page object model
-
 ```typescript
 class theinternet {
 
