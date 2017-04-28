@@ -71,6 +71,6 @@ export default LoginPage
 ```
 [/model/pages/login.page.ts](https://github.com/andrew-fowler/webdriverio-cucumber-typescript/blob/master/src/model/pages/login.page.ts)
 ---
-Autocompletion for Page Objects
+## Autocompletion for Page Objects
 
 ![Logo](assets/examplestep.gif)
