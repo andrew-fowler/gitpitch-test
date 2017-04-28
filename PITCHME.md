@@ -12,7 +12,7 @@ Feature: The internet - Logging in
     Then I am presented with the success message
     And the logout button is visible
 ```
-
+https://github.com/andrew-fowler/webdriverio-cucumber-typescript/blob/master/src/features/login.feature
 ---
 
 ## Step definitions
@@ -46,6 +46,7 @@ module.exports = function theinternet() {
         } );
 };
 ```
+https://github.com/andrew-fowler/webdriverio-cucumber-typescript/blob/master/src/steps/login.ts
 ---
 
 ## Page object model
@@ -66,6 +67,7 @@ class Login_Page {
 const LoginPage = new Login_Page();
 export default LoginPage
 ```
+https://github.com/andrew-fowler/webdriverio-cucumber-typescript/blob/master/src/model/pages/login.page.ts
 ---
 Autocompletion for Page Objects
 
