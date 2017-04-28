@@ -66,3 +66,7 @@ class Login_Page {
 const LoginPage = new Login_Page();
 export default LoginPage
 ```
+---
+Autocompletion for Page Objects
+
+![Logo](assets/examplestep.gif)
