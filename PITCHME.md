@@ -1,10 +1,21 @@
 # Webdriverio
-# Cucumber
-# Typescript
+## Cucumber
+### Typescript
+
+---
+## Features
+
+```gherkin
+Feature: The internet
+
+  Scenario: Loading the internet
+    Given I load the internet
+    Then the internet is loaded
+```
 
 ---
 
-# Step definitions
+## Step definitions
  
 ```typescript
 import TheInternet from '../model/pages/theinternet.page';
@@ -27,7 +38,7 @@ module.exports = function theinternet() {
 ```
 ---
 
-# Page object model
+## Page object model
 
 ```typescript
 class theinternet {
